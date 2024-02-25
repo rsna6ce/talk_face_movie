@@ -28,9 +28,15 @@ $ sudo apt install ffmpeg
     * picture/face_3.png : open mouth large with open eyes
     * picture/face_4.png : close mouth with close eyes
 
+* run (sample)
+```
+$ cd talk_face_movie
+$ python3 talk_face_movie.py -i sample.wav -o sample.mp4
+```
 * help
 ```
-$ ./talk_face_movie.py -h
+$ cd talk_face_movie
+$ python3 talk_face_movie.py -h
 usage: talk_face_movie.py [-h] -i INPUT -o OUTPUT [-f FRAME_RATE] [-p PICTURE_DIR] [-s SMALL_THRESHOLD] [-l LARGE_THRESHOLD] [-b BLINK_INTERVAL]
 
 options:
@@ -51,12 +57,7 @@ options:
                         blink interval (ms)
 ```
 
-* run (sample)
-```
-$ python3 talk_face_movie.py -i sample.wav -o sample.mp4
-```
-
-*clean up
+* clean up
 ```
 $ cd talk_face_movie
 $ rm temp/*.png
