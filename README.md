@@ -37,7 +37,8 @@ $ python3 talk_face_movie.py -i sample.wav -o sample.mp4
 ```
 $ cd talk_face_movie
 $ python3 talk_face_movie.py -h
-usage: talk_face_movie.py [-h] -i INPUT -o OUTPUT [-f FRAME_RATE] [-p PICTURE_DIR] [-s SMALL_THRESHOLD] [-l LARGE_THRESHOLD] [-b BLINK_INTERVAL]
+usage: talk_face_movie.py [-h] -i INPUT -o OUTPUT [-f FRAME_RATE] [-p PICTURE_DIR]
+                     [-s SMALL_THRESHOLD] [-l LARGE_THRESHOLD] [-b BLINK_INTERVAL]
 
 options:
   -h, --help            show this help message and exit
