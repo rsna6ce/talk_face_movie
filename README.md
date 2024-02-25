@@ -1,5 +1,7 @@
 # talk_face_movie
 
+https://github.com/rsna6ce/talk_face_movie/assets/86136223/1d628e52-5d59-4937-961b-8db66fa95ff0
+
 ## Overview
 * The talk_face_movie is a tool that creates a video of a talking face according to the audio of the input wav file.
 * input:wav file and 4 face files.
