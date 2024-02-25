@@ -18,7 +18,7 @@ def main():
     parser.add_argument('-p', '--picture_dir', help='directory of face picture', default='', type=str, dest='picture_dir')
     parser.add_argument('-s', '--small_threshold', help='small mouth sound threshold', default=0.1, type=float, dest='small_threshold')
     parser.add_argument('-l', '--large_threshold', help='large mouth sound threshold', default=0.25, type=float, dest='large_threshold')
-    parser.add_argument('-w', '--wink_interval', help='wink interval (ms)', default=2000, type=int, dest='wink_interval')
+    parser.add_argument('-b', '--blink_interval', help='blink interval (ms)', default=2000, type=int, dest='blink_interval')
     args = parser.parse_args()
     talk_face_movie(args)
 
@@ -39,7 +39,7 @@ def talk_face_movie(param):
     filename_close = picture_dir + '/face_1.png'
     filename_small = picture_dir + '/face_2.png'
     filename_large = picture_dir + '/face_3.png'
-    filename_wink  = picture_dir + '/face_4.png'
+    filename_blink = picture_dir + '/face_4.png'
 
     # read wav file param
     filename = param.input
@@ -57,7 +57,7 @@ def talk_face_movie(param):
     sample_count = int(data_length / sample_interval)
     sample_count = 0
     signal_peak = 0
-    latest_wink = 0
+    latest_blink = 0
     frame_number = 0
     prev_style = ""
     for i in range(data_length):
@@ -70,12 +70,12 @@ def talk_face_movie(param):
             frame_number += 1
 
             if signal_peak < param.small_threshold:
-                if ((i - latest_wink)/wav_params.framerate) * 1000 > param.wink_interval:
-                    latest_wink = i
-                    # wink
-                    shutil.copy(filename_wink, temp_filename)
-                    prev_style = 'wink'
-                    print('wink')
+                if ((i - latest_blink)/wav_params.framerate) * 1000 > param.blink_interval:
+                    latest_blink = i
+                    # blink
+                    shutil.copy(filename_blink, temp_filename)
+                    prev_style = 'blink'
+                    print('blink')
                 else:
                     # close face
                     shutil.copy(filename_close, temp_filename)
