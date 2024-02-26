@@ -84,6 +84,7 @@ def talk_face_movie(param):
             elif signal_peak < param.large_threshold:
                 # small mouth
                 if prev_style == 'small':
+                    # numnum
                     shutil.copy(filename_close, temp_filename)
                     prev_style = 'close'
                     print('close(small)')
@@ -94,11 +95,12 @@ def talk_face_movie(param):
             else:
                 # large mouth
                 if prev_style == 'large':
+                    # numnum
                     shutil.copy(filename_small, temp_filename)
                     prev_style = 'small'
                     print('small(large)')
                 else:
-                    shutil.copy(filename_small, temp_filename)
+                    shutil.copy(filename_large, temp_filename)
                     prev_style = 'large'
                     print('large')
             sample_count = 0
