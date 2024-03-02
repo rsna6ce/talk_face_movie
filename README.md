@@ -60,7 +60,7 @@ options:
                         blink interval (ms)
 ```
 
-* clean up
+* clean up temporary data
 ```
 $ cd talk_face_movie
 $ rm temp/*.png
