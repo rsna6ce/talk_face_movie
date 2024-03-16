@@ -13,7 +13,7 @@ from PIL import Image
 def main():
     parser = argparse.ArgumentParser(prog='talk_face_movie.py')
     parser.add_argument('-i', '--input', help='input wav file', required=True, dest='input')
-    parser.add_argument('-o', '--output', help='output mp4 file', required=True, dest='output')
+    parser.add_argument('-o', '--output', help='output mp4 file. default=(input).mp4', derault='', dest='output')
     parser.add_argument('-f', '--frame_rate', help='frame_rate fps', default=15, dest='frame_rate')
     parser.add_argument('-p', '--picture_dir', help='directory of face picture', default='', type=str, dest='picture_dir')
     parser.add_argument('-s', '--small_threshold', help='small mouth sound threshold', default=0.1, type=float, dest='small_threshold')
@@ -42,8 +42,8 @@ def talk_face_movie(param):
     filename_blink = picture_dir + '/face_4.png'
 
     # read wav file param
-    filename = param.input
-    wave_file = wave.open(filename, 'r')
+    filename_input = param.input
+    wave_file = wave.open(filename_input, 'r')
     wav_params = wave_file.getparams()
     #print(wav_params)
 
@@ -127,6 +127,7 @@ def talk_face_movie(param):
 
     #mux sound with ffmpeg
     # ffmpeg -i 001.mp4 -i 001.wav -c:v copy -c:a aac -map 0:v:0 -map 1:a:0 output.mp4 -y
+    filename_output = param.output if param.output!='' else filename_input + '.mp4'
     subprocess.run(('ffmpeg' ,
         '-loglevel', 'warning',
         '-y',
@@ -136,7 +137,7 @@ def talk_face_movie(param):
         '-c:a', 'aac',
         '-map', '0:v:0',
         '-map', '1:a:0',
-        param.output))
+        filename_output))
     
 if __name__ == '__main__':
     sys.exit(main())
