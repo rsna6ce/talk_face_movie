@@ -13,7 +13,7 @@ from PIL import Image
 def main():
     parser = argparse.ArgumentParser(prog='talk_face_movie.py')
     parser.add_argument('-i', '--input', help='input wav file', required=True, dest='input')
-    parser.add_argument('-o', '--output', help='output mp4 file. default=(input).mp4', derault='', dest='output')
+    parser.add_argument('-o', '--output', help='output mp4 file. default=(input).mp4', default='', dest='output')
     parser.add_argument('-f', '--frame_rate', help='frame_rate fps', default=15, dest='frame_rate')
     parser.add_argument('-p', '--picture_dir', help='directory of face picture', default='', type=str, dest='picture_dir')
     parser.add_argument('-s', '--small_threshold', help='small mouth sound threshold', default=0.1, type=float, dest='small_threshold')
