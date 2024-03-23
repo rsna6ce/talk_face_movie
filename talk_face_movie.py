@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import argparse
 import wave
+import math
 import numpy as np
 import glob
 from PIL import Image
@@ -65,7 +66,16 @@ def talk_face_movie(param):
         sample_count += 1
         if sample_count >= sample_interval:
             frame_number_with_zero = str(frame_number).zfill(8)
-            print("{}  {:.3f}".format(frame_number_with_zero, signal_peak), end='  ')
+            msec, sec = f, i = math.modf(frame_number / param.frame_rate)
+            min = sec // 60
+            sec = sec % 60
+            msec_with_zero = str(int(msec*1000)).zfill(3)
+            sec_with_zero = str(int(sec)).zfill(2)
+            min_with_zero = str(int(min)).zfill(3)
+            print("{} ({}:{}:{}) {:.3f}".format(
+                frame_number_with_zero,
+                min_with_zero, sec_with_zero, msec_with_zero,
+                signal_peak), end='  ')
             temp_filename = temp_dir + '/' + frame_number_with_zero + '.png'
             frame_number += 1
 
