@@ -80,7 +80,7 @@ def talk_face_movie(param):
             frame_number += 1
 
             if signal_peak < param.small_threshold:
-                if ((i - latest_blink)/wav_params.framerate) * 1000 > param.blink_interval:
+                if ((i - latest_blink)*1000/wav_params.framerate) * 1000 > param.blink_interval:
                     latest_blink = i
                     # blink
                     shutil.copy(filename_blink, temp_filename)
