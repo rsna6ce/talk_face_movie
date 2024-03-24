@@ -66,7 +66,7 @@ def talk_face_movie(param):
         sample_count += 1
         if sample_count >= sample_interval:
             frame_number_with_zero = str(frame_number).zfill(8)
-            msec, sec = f, i = math.modf(frame_number / param.frame_rate)
+            msec, sec = math.modf(frame_number / param.frame_rate)
             min = sec // 60
             sec = sec % 60
             msec_with_zero = str(int(msec*1000)).zfill(3)
@@ -80,7 +80,7 @@ def talk_face_movie(param):
             frame_number += 1
 
             if signal_peak < param.small_threshold:
-                if ((i - latest_blink)*1000/wav_params.framerate) * 1000 > param.blink_interval:
+                if ((i - latest_blink)*1000/wav_params.framerate) > param.blink_interval:
                     latest_blink = i
                     # blink
                     shutil.copy(filename_blink, temp_filename)
