@@ -118,6 +118,7 @@ def talk_face_movie(param):
     wave_file.close()
 
     # encode with ffmpeg
+    print('encode with ffmpeg ....')
     frames_dir = temp_dir
     frame_rate = param.frame_rate
     img = Image.open(filename_close)
